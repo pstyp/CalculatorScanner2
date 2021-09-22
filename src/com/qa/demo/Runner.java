@@ -8,5 +8,9 @@ public class Runner {
 		Menu start = new Menu(); 
 		
 		start.menu();
+		
+		
+		
+		
 	}
 }

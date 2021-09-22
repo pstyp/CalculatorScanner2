@@ -2,9 +2,12 @@ package com.qa.demo;
 
 import java.util.Scanner;
 
+import com.qa.exceptions.CantDivideByALargerNumberException;
+
 public class Menu {
 
-	 Scanner input = new Scanner(System.in); 
+//	 Scanner input = new Scanner(System.in); 
+	 Input input = new Input();
 
 	public void menu() {
 		
@@ -12,6 +15,7 @@ public class Menu {
 		String menuOption = "";
 	    int num1;
 		int num2;
+		
 		
        
 		
@@ -28,47 +32,52 @@ public class Menu {
 			System.out.println("=".repeat(40));
 			System.out.println("\t0). EXIT");
 
-			menuOption = this.input.nextLine();
+			menuOption = input.getString();
 			
 			switch (menuOption) {
 				case "1":
 					System.out.println("Please enter first number");
-					num1 = input.nextInt();
+					num1 = input.getInt();
 					System.out.println("Please enter second number");
-					num2 = input.nextInt();
-					input.nextLine();
+					num2 = input.getInt();
+					
 					System.out.println("Your answer is: ");
 					System.out.println(CalculatorScanner.add(num1, num2));
 					break;
 	
 				case "2":
 					System.out.println("Please enter first number");
-					num1 = input.nextInt();
+					num1 = input.getInt();
 					System.out.println("Please enter second number");
-					num2 = input.nextInt();
-					input.nextLine();
+					num2 = input.getInt();
 					System.out.println("Your answer is: ");
 					System.out.println(CalculatorScanner.sub(num1, num2));
 					break;
 	
 				case "3":
 					System.out.println("Please enter first number");
-					num1 = input.nextInt();
+					num1 = input.getInt();
 					System.out.println("Please enter second number");
-					num2 = input.nextInt();
-					input.nextLine();
+					num2 = input.getInt();
 					System.out.println("Your answer is: ");
 					System.out.println(CalculatorScanner.mul(num1, num2));
 					break;
 	
 				case "4":
 					System.out.println("Please enter first number");
-					num1 = input.nextInt();
+					num1 = input.getInt();
 					System.out.println("Please enter second number");
-					num2 = input.nextInt();
-					input.nextLine();
+					num2 = input.getInt();
 					System.out.println("Your answer is: ");
+				try {
 					System.out.println(CalculatorScanner.div(num1, num2));
+				} catch (ArithmeticException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (CantDivideByALargerNumberException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					break;
 					
 				case "0":

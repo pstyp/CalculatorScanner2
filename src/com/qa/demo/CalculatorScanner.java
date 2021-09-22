@@ -2,6 +2,9 @@ package com.qa.demo;
 
 import java.util.Scanner;
 
+import com.qa.exceptions.CantDivideByALargerNumberException;
+
+
 public class CalculatorScanner {
 
 	public static double result;
@@ -28,13 +31,15 @@ public class CalculatorScanner {
 		return result;
 	}
 
-	public static double div(double num1, double num2) {
-		
-		result = num1/num2;
-		return result;
+		public static double div(double x, double y) throws ArithmeticException, CantDivideByALargerNumberException {
 
-	
-
+			if (y == 0) {
+				throw new ArithmeticException("Cannot div by 0");
+			}else if (x < y){
+				throw new CantDivideByALargerNumberException("Avoid dividing by a large number than " + x);
+			}else {
+				return x / y;
+			}
 		}
 
 	}
